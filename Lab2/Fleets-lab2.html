@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <style>
+   
+   </style>
+   <title>IT 2320 - Lab 2</title>
+   <pre>
+   <script>
+      "use strict";
+	  
+	  // set up an array and initialize the first two values
+	  var fibArray = [];
+	  fibArray[0] = 0;
+	  fibArray[1] = 1;
+	  fibArray[2] = 1;
+	  fibArray[3] = 2;
+	  fibArray[4] = 3;
+	  fibArray[5] = 5;
+	  fibArray[6] = 8;
+	  fibArray[7] = 13;
+	  fibArray[8] = 21;
+	  fibArray[9] = 34;
+
+	  // declare a variable for the size of the squence 
+	  var fibNum;
+	  var ratio;
+	  
+	  // prompt user for how many 
+		
+		var repeat = "y";
+		do{
+	  var fibNum = prompt("Enter how many");
+	  if (isNaN (fibNum) ) {
+		  alert("invalid");
+		  repeat = prompt("again?","y");
+	  }
+	  else if (fibNum < 3)
+	  {
+		  alert("Cannot be less than 3");
+		  repeat = prompt("again?","y");
+	  }
+	   else if (fibNum >= 3 ) {
+		   /*alert("accepted");*/
+
+		   for (var i = 2; i < fibNum; i++) {
+			fibArray[i] = fibArray [i - 1]+ fibArray[i-2];
+			}	
+			var fibNum = " ";
+						for (var ratio = fibArray[i] = fibArray [i-1] / fibArray[i-2]; i<fibNum; i++) {
+							
+						}
+			alert (fibArray + "\n" + "ratio:" + ratio);
+	   }
+			
+	}
+		while (repeat == "y");
+
+		
+
+
+	  // check that fibNum >= 3
+	  
+	  // write the values into the array
+	  // You start at 2 because the first two values are already there
+	  for (var i=2; i<fibNum; i++) {
+	     
+	  }
+	  
+	  // read from the array and print balues to screen
+	  // another for loop 
+	  
+	  // calculate golden ratio and display it
+	  //  last number / 2nd last number
+   
+   </script>
+   </pre>
+</head>
+<body>
+   <h2>Dorrell Fleets - IT 2320 - Lab 2</h2>
+
+</body>
+
+</html>
