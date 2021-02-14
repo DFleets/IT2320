@@ -18,17 +18,20 @@
 	  // declare a variable for the size of the squence 
 	  var fibNum;
 	  var ratio;
-	  
+	  var repeat = "y";
+
 	  // prompt user for how many 	
-		
+		do {
 	  var fibNum = prompt("Enter how many");
 	  if (isNaN (fibNum) ) {
 		  alert("Invalid- Not a number");
+		  repeat = prompt(" go again?"," y for yes or any letter to quit");
 		  
 	  }
-	  else if (fibNum < 3)
+	  else if (fibNum <3)
 	  {
 		  alert("Cannot be less than 3");
+		  repeat = prompt(" go again?","y for yes or any letter to quit");
 		  
 	  }
 	   else if (fibNum >= 3 ) {
@@ -45,6 +48,13 @@
 			document.write(" The Golden ratio is:"+ ratio);
 		}
 
+		}
+		while (repeat == "y");
+				
+
+		
+		
+
 
 
 		   
@@ -59,7 +69,8 @@
 	  
 	  // write the values into the array
 	  // You start at 2 because the first two values are already there
-	  /*for (var i=2; i<fibNum; i++) {  
+	  /*for (var i=2; i<fibNum; i++) {
+	     
 	  }*/
 	  
 	  // read from the array and print balues to screen
