@@ -4,11 +4,12 @@
 <script>
 "use strict"
 
-	var images = [];
-
 	var  i= 0;
 
-	var clock =3000;
+	var images = [];
+
+	var clock =5000;
+
 	images[0] = "images\jackson.jpg";
 	images[1] = "images\madison.jpg";
 	images[2] = "images\jefferson.jpg";
@@ -17,27 +18,29 @@
 
 	function change(){
 
-		document.getElementsByName("pic").images[i]
+
+		document.getElementsByName("pic").src = images[i]
 		//document.pic.src = images[i];//
 		//img.src = images[i];//
 
 
+		if(i < images.length - 1){
+			i++;
+		}
+
+		else {
+
+			i = 0;
+		}
+
+
+		setTimeout("change()", clock);
+
 	}
-	
-
-	if(i < images.length - 1){
-		i++;
-	}
-	else {
-		i-0;
-	
-
-	setTimeout("change()", clock); 
-		
-}
 
 
-window.onload = change();
+
+     window.onload = change();
 
 
 
@@ -48,7 +51,7 @@ window.onload = change();
 	<h2>Dorrell Fleets - IT 2320 - Lab 5</h2>
 	<p><center>
 	   Timer (seconds): <input type="text" id="timerVal" value="5"><br/><br/>
-	   <img name="pic" src="images/adams.jpg"><br/><br/>
+	   <img name="pic" src="images/adams.jpg" ><br/><br/>
 	   <h2 id="timerCount">5</h2>
 	</center></p>
 </body>
