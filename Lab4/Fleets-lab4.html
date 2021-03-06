@@ -12,8 +12,6 @@
         <script>
             "use strict"
 
-            
-
             function mstatusChange() {
 
                 if (document.getElementById("mstatus1").value == "married"){
@@ -25,25 +23,42 @@
 
             }
 
-            function processForm(){
+            function submit() {
+                
+                formGood = false;
+
+                return false;
+
+            }
+
+            function sex(){
 
                 var gender="";
-                var mstatus="";
 
+                if(getElementById("female").checked){gender = "Female";}
+                    if(getElementById("male").checked){gender = "Male";}   
+
+            }
+
+            function processForm(){
+
+               // var gender="";///
+                var mstatus="";
+                var myform="";
+                
                 var formGood="";
 
                /* if(getElementById("female").checked){gender = "Female";}
                 if(getElementById("male").checked){gender = "Male";}*/
 
-               
 
                 var lname = document.getElementById('lname').value;
                 var fname = document.getElementById('fname').value;
-                var address = document.getElementById('address').value;
-                var apt = document.getElementById('apt').value;
+                var address1 = document.getElementById('address1').value;
+                var address2 = document.getElementById('address2').value;
                 var city = document.getElementById('city').value;
                 var state = document.getElementById('state').value;
-                var zip = document.getElementById('zip').value;
+                var zipcode = document.getElementById('zipcode').value;
                 //var gender = document.getElementById('gender').value;
                 var dob = document.getElementById('dob').value;
                 //var mstatus = document.getElementById('mstatus').value;
@@ -51,7 +66,7 @@
                 var email = document.getElementById('email').value;
                 var phone = document.getElementById('phone').value;
                 var password = document.getElementById('password').value;
-                var password = document.getElementById('password').value
+                var password2 = document.getElementById('password2').value
 
                 
 
@@ -72,7 +87,8 @@
                     document.getElementById('fnameLabel').className ='blacktext';
                 }
 
-                if(address ==""){
+
+                if(address1 ==""){
                     formGood = false;
                     document.getElementById('addresslabel').className ='redtext';
                 }
@@ -80,13 +96,15 @@
                     document.getElementById('addresslabel').className ='blacktext';
                 }
 
-                if(apt ==""){
+
+                if(address2 ==""){
                     formGood = false;
                     document.getElementById('aptlabel').className ='redtext';
                 }
                 else{
                     document.getElementById('aptlabel').className ='blacktext';
                 }
+
 
                 if(city ==""){
                     formGood = false;
@@ -96,22 +114,25 @@
                     document.getElementById('citylabel').className ='blacktext';
                 }
 
+
                 if(state ==""){
                     formGood = false;
 
-                    document.getElementById('state').className ='redtext';
+                    document.getElementById('statelabel').className ='redtext';
                 }
                 else{
-                    document.getElementById('state').className ='blacktext';
+                    document.getElementById('statelabel').className ='blacktext';
                 }
 
-                if(zip ==""){
+
+                if(zipcode ==""){
                     formGood = false;
                     document.getElementById('ziplabel').className ='redtext';
                 }
                 else{
                     document.getElementById('ziplabel').className ='blacktext';
                 }
+
 
                 if(gender ==""){
                     formGood = false;
@@ -121,6 +142,7 @@
                     document.getElementById('gender').className ='blacktext';
                 }
 
+
                 if(dob ==""){
                     formGood = false;
                     document.getElementById('doblabel').className ='redtext';
@@ -129,13 +151,15 @@
                     document.getElementById('doblabel').className ='blacktext';
                 }
 
+
                 if(mstatus ==""){
                     formGood = false;
                     document.getElementById('mstatus').className ='redtext';
                 }
-                else if (mstatus == "single" || "married"){
+                else{
                     document.getElementById('mstatus').className ='blacktext';
                 }
+
 
                 if(sname ==""){
                     formGood = false;
@@ -145,6 +169,7 @@
                     document.getElementById('snamelabel').className ='blacktext';
                 }
 
+
                 if(email ==""){
                     formGood = false;
                     document.getElementById('emaillabel').className ='redtext';
@@ -152,6 +177,7 @@
                 else{
                     document.getElementById('emaillabel').className ='blacktext';
                 }
+
 
                 if(phone ==""){
                     formGood = false;
@@ -161,6 +187,7 @@
                     document.getElementById('phonelabel').className ='blacktext';
                 }
 
+
                 if(password ==""){
                     formGood = false;
                     document.getElementById('passwordlabel').className ='redtext';
@@ -168,6 +195,7 @@
                 else{
                     document.getElementById('passwordlabel').className ='blacktext';
                 }
+
 
                 if(password2 ==""){
                     formGood = false;
@@ -177,7 +205,8 @@
                     document.getElementById('passwordlabel2').className ='blacktext';
                 }
 
-                if(password != password2){
+
+                if(password != password2 || " "){
                     formGood = false;
                     document.getElementById('passwordlabel').className ='redtext';
                     document.getElementById('passwordlabel2').className ='redtext';
@@ -188,13 +217,14 @@
                 }
 
 
-                if( myform = ""){
-                    formGood = false;
-                    document.return('errormsg').innerHTML ="Please fix errors";
+                if (formGood){
+                    document.getElementById("myForm").submit();
                     
                 }
-                else { 
-                    document.getElementById('myform').submit();
+                else {
+                    document.getElementById('errorMsg').innerHTML="Please fix the errors below";
+                   
+                    
                 }
 
             }
@@ -203,7 +233,9 @@
 
             window.onload = function() {
                 document.getElementById('mstatus').onchange=mstatusChange;
+                document.getElementsById('gender').onchange=sex;
                 document.getElementById('submit').onclick=processForm;
+                
 
             }
 
@@ -213,19 +245,19 @@
         <main>
             <h1>Dorrell Fleets Lab 4 - Form Processing</h1>
             <table>
-            <h2><span id="errormsg" class='redtext'> </span></h2>
-            <form id="myForm"action="http://www.waynedog.net/formreader.php" method="post">
+            <h2><span id="errorMsg" class='redtext'> </span></h2>
+            <form id="myForm" action="http://www.waynedog.net/formreader.php" method="post">
             <tr>
             <th><label id="fnameLabel" class="blacktext">First Name <input type="text" id="fname" name="fname"></label></th>
             <th><label id="lnameLabel" class="blacktext">Last Name <input type="text" id="lname" name="lname"></label></th>
             </tr>
             <tr>
-            <th><label id="addresslabel" class="blacktext">Address <input type="text" id="address" name="address"></label></th>
-            <th><label id="aptlabel" class="blacktext">Suite or Apt. <input type="text" id="apt" name="apt"></label></th>
+            <th><label id="addresslabel" class="blacktext">Address <input type="text" id="address1" name="address1"></label></th>
+            <th><label id="aptlabel" class="blacktext">Suite or Apt. <input type="text" id="address2" name="address2"></label></th>
             </tr>
             <tr>
             <th><label id="citylabel" class="blacktext">City <input type="text" id="city" name="city"></label></th>
-            <th><label for="statelabel" class="blacktext">State <select id="state" name="state" >
+            <th><label id="statelabel" class="blacktext">State <select id="state" name="state" >
             <option value="">Select a state</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -333,30 +365,30 @@
             </label></th>
             </tr>
             <tr>
-            <th><label id="ziplabel" class="blacktext">Zip Code <input type="text" id="zip" name="zip"></label></th>
+            <th><label id="ziplabel" class="blacktext">ZIP Code <input type="text" id="zipcode" name="zipcode"></label></th>
             </tr>
-            <th><label id="gender" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" value="Male"><label for="female"> Female </label><input type="radio" id="female" name="gender" value="Female"></th>
+            <th><label id="gender" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" onclick="sex()" value="Male"><label for="female"> Female </label><input type="radio" id="female" name="gender" onclick="sex()" value="Female"></th>
             <th><label id="doblabel" class="blacktext">Birthdate <input type="date" id="dob" name="dob"></label></th>
             </tr>
             <tr>
-            <th><label id="mstatus" class="blacktext">Maritial Status <select id="mstatus1" name="mstatus1" onchange="mstatusChange()" >
-                <option value=" ">Choose one</option>
+            <th><label id="mstatus" class="blacktext">Maritial Status <select id="mstatus1"  name="mstatus1" onchange="mstatusChange()" >
+                <option value=" ">Choose one</option> 
                 <option value="single">Single</option>
-                <option value="married" >Married</option> 
+                <option value="married">Married</option> 
             </select>
             </label></th>
             <th><label id="snamelabel" class="blacktext">Spouse Name <input type="text" id="sname" name="sname" disabled></label></th>
             </tr>
             <tr>
             <th><label id="emaillabel" class="blacktext">Email <input type="email" id="email" name="email"></label></th>
-            <th><label id="phonelabel" class="blacktext">Phone Number <input type="text" id="phone" name="Phone"></label></th>
+            <th><label id="phonelabel" class="blacktext">Phone Number <input type="text" id="phone" name="phone" ></label></th>
             </tr>
             <tr>
             <th><label id="passwordlabel" class="blacktext">Password <input type="password" id="password" name="password"></label></th>
             <th><label id="passwordlabel2" class="blacktext">Confirm Password <input type="password" id="password2" name="password2"></label></th>
             </tr>
             </table>
-            <input type="reset" value="Reset">
+            <input type="reset" onclick="reset()" value="Reset">
             <input type="submit" id='submit' onclick="processForm()" value="Submit">
         </form>
         </main>
