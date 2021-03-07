@@ -24,32 +24,50 @@
             }
 
             function submit() {
+
                 
-                formGood = false;
-
-                return false;
-
             }
 
-            function sex(){
+            function genderChange(){
+                
 
-                var gender="";
+                if (document.getElementById('male').value == "male"){
 
-                if(getElementById("female").checked){gender = "Female";}
-                    if(getElementById("male").checked){gender = "Male";}   
+                    document.getElementById('gender').className ='blacktext';
+                }
+
+                if (document.getElementById('female').value == "female"){
+
+                    document.getElementById('gender').className ='blacktext';
+                }
+
+                else {
+
+                    document.getElementById('gender').className ='redtext';
+                }
+                
+
+
+
+            
+            
+            
 
             }
 
             function processForm(){
 
-               // var gender="";///
+               var gender="";
                 var mstatus="";
                 var myform="";
-                
+                //var genderxy="";
                 var formGood="";
 
-               /* if(getElementById("female").checked){gender = "Female";}
-                if(getElementById("male").checked){gender = "Male";}*/
+   
+
+
+            
+               
 
 
                 var lname = document.getElementById('lname').value;
@@ -61,7 +79,7 @@
                 var zipcode = document.getElementById('zipcode').value;
                 //var gender = document.getElementById('gender').value;
                 var dob = document.getElementById('dob').value;
-                //var mstatus = document.getElementById('mstatus').value;
+                var mstatus1 = document.getElementById('mstatus1').value;
                 var sname = document.getElementById('sname').value;
                 var email = document.getElementById('email').value;
                 var phone = document.getElementById('phone').value;
@@ -134,14 +152,13 @@
                 }
 
 
-                if(gender ==""){
+               /*if(gender ==""){
                     formGood = false;
                     document.getElementById('gender').className ='redtext';
                 }
                 else{
                     document.getElementById('gender').className ='blacktext';
-                }
-
+                }*/
 
                 if(dob ==""){
                     formGood = false;
@@ -152,7 +169,7 @@
                 }
 
 
-                if(mstatus ==""){
+                if(mstatus1 ==""){
                     formGood = false;
                     document.getElementById('mstatus').className ='redtext';
                 }
@@ -206,7 +223,7 @@
                 }
 
 
-                if(password != password2 || " "){
+                if(password != password2){
                     formGood = false;
                     document.getElementById('passwordlabel').className ='redtext';
                     document.getElementById('passwordlabel2').className ='redtext';
@@ -223,7 +240,7 @@
                 }
                 else {
                     document.getElementById('errorMsg').innerHTML="Please fix the errors below";
-                   
+                    document.getElementById("myForm").submit= false;
                     
                 }
 
@@ -233,7 +250,8 @@
 
             window.onload = function() {
                 document.getElementById('mstatus').onchange=mstatusChange;
-                document.getElementsById('gender').onchange=sex;
+                document.getElementById('gender').onchange=genderChange;
+               
                 document.getElementById('submit').onclick=processForm;
                 
 
@@ -367,12 +385,12 @@
             <tr>
             <th><label id="ziplabel" class="blacktext">ZIP Code <input type="text" id="zipcode" name="zipcode"></label></th>
             </tr>
-            <th><label id="gender" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" onclick="sex()" value="Male"><label for="female"> Female </label><input type="radio" id="female" name="gender" onclick="sex()" value="Female"></th>
+            <th><label id="gender" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" value="Male" onchange="genderChange()"><label for="female"> Female </label><input type="radio" id="female" name="gender" value="Female" onchange="genderChange()"></th>
             <th><label id="doblabel" class="blacktext">Birthdate <input type="date" id="dob" name="dob"></label></th>
             </tr>
             <tr>
             <th><label id="mstatus" class="blacktext">Maritial Status <select id="mstatus1"  name="mstatus1" onchange="mstatusChange()" >
-                <option value=" ">Choose one</option> 
+                <option value="">Choose one</option> 
                 <option value="single">Single</option>
                 <option value="married">Married</option> 
             </select>
@@ -388,8 +406,8 @@
             <th><label id="passwordlabel2" class="blacktext">Confirm Password <input type="password" id="password2" name="password2"></label></th>
             </tr>
             </table>
-            <input type="reset" onclick="reset()" value="Reset">
-            <input type="submit" id='submit' onclick="processForm()" value="Submit">
+            <input type="reset" value="Reset">
+            <input type="button" id='submit' onclick="processForm()" value="Submit">
         </form>
         </main>
     </body>
