@@ -1,0 +1,91 @@
+<html>
+<head>
+	
+<script>
+//"use strict"
+function start() {
+
+ var cmd= "";
+
+  cmd = document.getElementById('timerVal').value;
+
+   function display(timecount,str) {
+    document.getElementById(timecount).innerHTML=str;
+  }
+        
+  function Second( x ) {
+    return Math.floor(x/60)+ x%60;
+  }
+        
+  function sclock( remain, actions ) {
+    (function tCount() {
+       display("timecount", Second(remain));         
+       actions[remain] && actions[remain]();
+       (remain -= 1) >= 0 && setTimeout(arguments.clock, 1000);
+    })();
+
+  }
+  sclock(cmd, {
+  })
+    }  
+
+
+
+		var $ = function (id) {return document.getElementById(id); };
+
+		window.onload = function(){
+
+		var listNode = $ ("list");
+		var imageNode = $("exhibition");
+
+		var i;
+		var linkNode;
+		var image;
+
+		var links = listNode.getElementsByTagName("a");
+
+		var imageCache = [];
+
+		for (i =0; i < links.length; i++){
+		linkNode = links[i];
+
+		image = new Image ();
+		image.src = linkNode.getAttribute("href");
+		imageCache[imageCache.length] = image;
+
+	   }
+
+
+	   var timerCount = 0;
+	   var timer = setInterval(
+
+	   function() {
+		   timerCount = (timerCount + 1)  % imageCache.length;
+		   image = imageCache[timerCount];
+		   imageNode.src = image.src; 	
+	   },
+
+	   5000);
+
+
+
+	}
+
+</script>
+</head>
+<body>
+	<h2>Dorrell Fleets - IT 2320 - Lab 5</h2>
+	<p><center>
+	   Timer (seconds): <input type="text" id="timerVal" value="0" onchange="start()"><br/><br/>
+	   <ul id="list">
+			<a href="images\adams.jpg"></a>
+			<a href="images\jackson.jpg"></a>
+			<a href="images\jefferson.jpg"></a>
+			<a href="images\madison.jpg"></a>
+			<a href="images\washington.jpg"></a>	
+	   </ul>
+	   <p><img src="images/adams.jpg" id="exhibition"></p><br/><br/>
+	   <h2 <span id="timecount">0</span></h2>
+	</center></p>
+</body>
+</html>
