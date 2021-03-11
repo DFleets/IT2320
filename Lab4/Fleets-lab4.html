@@ -19,49 +19,71 @@
                 }
                 else{
                     document.getElementById("sname").disabled = true;
+                    document.getElementById('snamelabel').className ='blacktext';
                 }
 
             }
 
-            function submit() {
-
+            function send() {
+                document.getElementById("myForm").submit();
                 
             }
 
-            function genderChange(){
+
+            function sex(){
+
+                if(name =="male"){
+                    document.getElementById("female").checked=false;
+                    document.getElementById("male").checked=true
+                    
+                    return genderxy;
+                }
+
+                else if(name =="female"){
+                    document.getElementById("male").checked,formGood =false;
+                    document.getElementById("female").checked,formGood =true;
+                    return genderxy;
+                }
+
                 
 
-                if (document.getElementById('male').value == "male"){
-
-                    document.getElementById('gender').className ='blacktext';
+               /* if(document.getElementById("male").value =="male"){
+                    document.getElementById('genderxy').className ='blacktext';
+                    return genderxy;
+                }
+                if(document.getElementById("female").value =="female"){
+                    document.getElementById('genderxy').className ='blacktext';
+                    return genderxy;
                 }
 
-                if (document.getElementById('female').value == "female"){
-
-                    document.getElementById('gender').className ='blacktext';
-                }
-
-                else {
-
-                    document.getElementById('gender').className ='redtext';
-                }
-                
-
-
-
-            
-            
-            
+                else{
+                    return genderxy;
+                    document.getElementById('genderxy').className ='redtext';
+                    
+                }*/
 
             }
+ 
+
+
 
             function processForm(){
 
-               var gender="";
+
+
+
                 var mstatus="";
+
+
+
+
                 var myform="";
-                //var genderxy="";
-                var formGood="";
+                var gender="";
+
+
+
+
+                var formGood= true;
 
    
 
@@ -77,7 +99,9 @@
                 var city = document.getElementById('city').value;
                 var state = document.getElementById('state').value;
                 var zipcode = document.getElementById('zipcode').value;
-                //var gender = document.getElementById('gender').value;
+                var gender = document.getElementsByName('gender').value;
+                //var male = document.getElementById('male').value;
+               // var female = document.getElementById('female').value;
                 var dob = document.getElementById('dob').value;
                 var mstatus1 = document.getElementById('mstatus1').value;
                 var sname = document.getElementById('sname').value;
@@ -152,13 +176,14 @@
                 }
 
 
-               /*if(gender ==""){
+                if(sex() ==""){
                     formGood = false;
-                    document.getElementById('gender').className ='redtext';
+                    document.getElementById('genderxy').className ='redtext';
                 }
                 else{
-                    document.getElementById('gender').className ='blacktext';
-                }*/
+                    document.getElementById('genderxy').className ='blacktext';
+                } 
+    
 
                 if(dob ==""){
                     formGood = false;
@@ -223,7 +248,7 @@
                 }
 
 
-                if(password != password2){
+                if(password=="" || password != password2){
                     formGood = false;
                     document.getElementById('passwordlabel').className ='redtext';
                     document.getElementById('passwordlabel2').className ='redtext';
@@ -250,9 +275,9 @@
 
             window.onload = function() {
                 document.getElementById('mstatus').onchange=mstatusChange;
-                document.getElementById('gender').onchange=genderChange;
+                document.getElementById('genderxy').onchange=sex;
                
-                document.getElementById('submit').onclick=processForm;
+                document.getElementById('send').onclick=processForm;
                 
 
             }
@@ -385,7 +410,7 @@
             <tr>
             <th><label id="ziplabel" class="blacktext">ZIP Code <input type="text" id="zipcode" name="zipcode"></label></th>
             </tr>
-            <th><label id="gender" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" value="Male" onchange="genderChange()"><label for="female"> Female </label><input type="radio" id="female" name="gender" value="Female" onchange="genderChange()"></th>
+            <th><label id="genderxy" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" value="Male" onchange="sex()"><label for="female"> Female </label><input type="radio" id="female" name="gender" value="Female" onchange="sex()"></th>
             <th><label id="doblabel" class="blacktext">Birthdate <input type="date" id="dob" name="dob"></label></th>
             </tr>
             <tr>
@@ -407,7 +432,7 @@
             </tr>
             </table>
             <input type="reset" value="Reset">
-            <input type="button" id='submit' onclick="processForm()" value="Submit">
+            <input type="button" id='send' onclick="processForm()" value="Submit">
         </form>
         </main>
     </body>
