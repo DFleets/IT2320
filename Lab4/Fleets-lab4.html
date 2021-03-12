@@ -14,7 +14,7 @@
 
             function mstatusChange() {
 
-                if (document.getElementById("mstatus1").value == "married"){
+                if (document.getElementById("mstatus").value == "married"){
                     document.getElementById("sname").disabled = false;
                 }
                 else{
@@ -23,74 +23,24 @@
                 }
 
             }
-
-            function send() {
-                document.getElementById("myForm").submit();
-                
-            }
-
-
-            function sex(){
-
-                if(name =="male"){
-                    document.getElementById("female").checked=false;
-                    document.getElementById("male").checked=true
-                    
-                    return genderxy;
-                }
-
-                else if(name =="female"){
-                    document.getElementById("male").checked,formGood =false;
-                    document.getElementById("female").checked,formGood =true;
-                    return genderxy;
-                }
-
-                
-
-               /* if(document.getElementById("male").value =="male"){
-                    document.getElementById('genderxy').className ='blacktext';
-                    return genderxy;
-                }
-                if(document.getElementById("female").value =="female"){
-                    document.getElementById('genderxy').className ='blacktext';
-                    return genderxy;
-                }
-
-                else{
-                    return genderxy;
-                    document.getElementById('genderxy').className ='redtext';
-                    
-                }*/
-
-            }
  
 
 
 
             function processForm(){
 
-
-
-
                 var mstatus="";
 
-
-
-
                 var myform="";
+
                 var gender="";
-
-
-
+                if (document.getElementById('male').checked){ gender="male";
+                }
+                if (document.getElementById('female').checked){gender="female";	  
+                }
+            
 
                 var formGood= true;
-
-   
-
-
-            
-               
-
 
                 var lname = document.getElementById('lname').value;
                 var fname = document.getElementById('fname').value;
@@ -98,12 +48,9 @@
                 var address2 = document.getElementById('address2').value;
                 var city = document.getElementById('city').value;
                 var state = document.getElementById('state').value;
-                var zipcode = document.getElementById('zipcode').value;
-                var gender = document.getElementsByName('gender').value;
-                //var male = document.getElementById('male').value;
-               // var female = document.getElementById('female').value;
+                var zipcode = document.getElementById('zipcode').value
                 var dob = document.getElementById('dob').value;
-                var mstatus1 = document.getElementById('mstatus1').value;
+                var mstatus = document.getElementById('mstatus').value;
                 var sname = document.getElementById('sname').value;
                 var email = document.getElementById('email').value;
                 var phone = document.getElementById('phone').value;
@@ -176,12 +123,12 @@
                 }
 
 
-                if(sex() ==""){
+                if(gender ==""){
                     formGood = false;
-                    document.getElementById('genderxy').className ='redtext';
+                    document.getElementById('genderlabel').className ='redtext';
                 }
                 else{
-                    document.getElementById('genderxy').className ='blacktext';
+                    document.getElementById('genderlabel').className ='blacktext';
                 } 
     
 
@@ -194,12 +141,12 @@
                 }
 
 
-                if(mstatus1 ==""){
+                if(mstatus ==""){
                     formGood = false;
-                    document.getElementById('mstatus').className ='redtext';
+                    document.getElementById('mstatuslabel').className ='redtext';
                 }
                 else{
-                    document.getElementById('mstatus').className ='blacktext';
+                    document.getElementById('mstatuslabel').className ='blacktext';
                 }
 
 
@@ -265,20 +212,9 @@
                 }
                 else {
                     document.getElementById('errorMsg').innerHTML="Please fix the errors below";
-                    document.getElementById("myForm").submit= false;
                     
-                }
-
-            }
-
-            
-
-            window.onload = function() {
-                document.getElementById('mstatus').onchange=mstatusChange;
-                document.getElementById('genderxy').onchange=sex;
-               
-                document.getElementById('send').onclick=processForm;
                 
+                }
 
             }
 
@@ -410,11 +346,11 @@
             <tr>
             <th><label id="ziplabel" class="blacktext">ZIP Code <input type="text" id="zipcode" name="zipcode"></label></th>
             </tr>
-            <th><label id="genderxy" class="blacktext">Gender </label><label for="male">Male </label><input type="radio" id="male" name="gender" value="Male" onchange="sex()"><label for="female"> Female </label><input type="radio" id="female" name="gender" value="Female" onchange="sex()"></th>
+            <th><label id="genderlabel" class="blacktext">Gender </label>Male<input type="radio" id="male" name="gender" value="male">Female<input type="radio" id="female" name="gender" value="female"></th>
             <th><label id="doblabel" class="blacktext">Birthdate <input type="date" id="dob" name="dob"></label></th>
             </tr>
             <tr>
-            <th><label id="mstatus" class="blacktext">Maritial Status <select id="mstatus1"  name="mstatus1" onchange="mstatusChange()" >
+            <th><label id="mstatuslabel" class="blacktext">Maritial Status <select id="mstatus"  name="mstatus" onchange="mstatusChange()" >
                 <option value="">Choose one</option> 
                 <option value="single">Single</option>
                 <option value="married">Married</option> 
@@ -432,7 +368,7 @@
             </tr>
             </table>
             <input type="reset" value="Reset">
-            <input type="button" id='send' onclick="processForm()" value="Submit">
+            <button type="button" id='send' onclick="processForm()">Submit</button>
         </form>
         </main>
     </body>
