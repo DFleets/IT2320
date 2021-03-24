@@ -41,26 +41,25 @@
 </html>
 <script>
     $(document).ready(function(){
-        var width = $(window).width();
+        var width = $(window).width() == 400;
             
 
        $("#btn").click(function(){
 
 
         $("#walker").animate({left: "900", opacity:"1"},3000).fadeIn(1000)
-        $("#walker").attr("#turn")
+        //$("#walker").attr("#turn")
         $("#walker").animate({left:"30"},3000).fadeOut(1000);
 
-         $(window).width()
- 
-         $(window).resize(function(){
+          
+        $(window).resize(function(){
             console.log(width);
             $("#walker").css("400px", width);
         });
 
 
 
-       // $(window).width("400px" <= 1000)
+       //$(window).width("400px" <= 1000)
 
 
 
@@ -96,11 +95,13 @@
         });*/
       
        });
+
+    
            
    
    
    
        
     });
-    
+        
 </script>
