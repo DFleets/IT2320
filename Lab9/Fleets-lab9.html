@@ -15,8 +15,8 @@
                 
             }
             .walker{
-                -webkit-transform: scaleX(-1);
-                 transform: scaleX(-1);
+                -webkit-transform: scaleX(-1,1);
+                 transform: scaleX(-1,1);
                 transform:scale(1,1);
                 transition:all 600ms ease;
             }
@@ -41,21 +41,43 @@
 </html>
 <script>
     $(document).ready(function(){
-        var width = $(window).width() == 400;
+       // size();
+
+       // $(window).resize(function(){
+          //  size();
+      //  });
+        
+      
+
+       /* function size(){
+            if ($(window).width() >= 1100) {
+                $("#btn").click(function(){
+                $('#walker').animate({
+                    opacity:"1", 
+                    
+                },3000).fadeIn(1000);
+            }
+                )};
+    
+        }
+        if ($(window).width() < 1100)
+        $('#walker').animate({
             
+        },3000).fadeOut(1000);*/
 
-       $("#btn").click(function(){
+        $("#btn").click(function(){
 
 
-        $("#walker").animate({left: "900", opacity:"1"},3000).fadeIn(1000)
-        //$("#walker").attr("#turn")
+        $("#walker").animate({left: "900", opacity:"1"},3000).fadeIn(1000);
+        var width = $(window).width("400") ;
+         $("#walker").attr("#turn")
         $("#walker").animate({left:"30"},3000).fadeOut(1000);
 
           
-        $(window).resize(function(){
+       /* $(window).resize(function(){
             console.log(width);
             $("#walker").css("400px", width);
-        });
+        });*/
 
 
 
