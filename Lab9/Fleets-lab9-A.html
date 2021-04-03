@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-Content-Type-Options" content="ie=edge" />
+        
+        
+        <style>
+            body { padding:0;
+            margin:0;
+            vertical-align: top; 
+            }
+        </style>
+        <title>Dorrell Fleets-IT-2320 Lab 9 </title>
+    </head>
+    <body>
+        <h1>Weather Search</h1>
+        ZipSearch: <input id="zipcode"   value=""/>
+        <input type="button" value="Zipcode" id="submit">
+        <script>
+
+
+            var api= 'http://api.openweathermap.org/data/2.5/forecast?id=';
+
+            var key= '&appid=bc0d506890789b9f048252ad0344a8b3';
+
+            var measure= 'units=imperial';
+
+            var input;
+
+            var forecast;
+
+            function start() {
+                createWALL(500,300);
+
+                var button = select('#submit');
+                button.onclick(forecastSearch);
+
+                input = select('#zipcode');
+
+            }
+
+            function forecastSearch() {
+
+                var url = api + input.value() + key + measure;
+                loadJSON(url, get ,jsonp);
+            }
+
+            function get(data) {
+                forecast = data;
+            }
+
+            function retrieve() {
+                background(0);
+                if (forecast) {
+                    var temp = forecast.main.temp;
+                    var temp_max = forecast.main.temp_max;
+                    var temp_min = forecast.main.temp_min;
+                    var humidity = forecast.main.humidity;
+                    var clouds = forecast.main.clouds ;
+                    var rain = forecast.main.rain;
+                    var visibility = forecast.main.visibility;
+                    var wind = forecast.main.wind;
+                    var pressure = forecast.main.pressure;
+                    var grnd_level = forecast.main.grnd_level;
+                    var sea_level = forecast.main.sea_level;
+                    
+                    (100, 100,temp,temp )
+                    (100, 100,temp_max, temp_max )
+                    (100, 100,temp_min, temp_min )
+                    (400, 100, humidity, humidity)
+                    (100, 100, clouds, clouds)
+                    (100, 100, rain, rain)
+                    (100, 100, visibility. visibility)
+                    (100, 100, wind, wind)
+                    (100, 100, pressure, pressure)
+                    (100, 100, grnd_level)
+                    ( 100, 100, sea_level)
+
+
+
+
+
+                }
+            }
+
+
+
+
+
+           /* $(document).ready(function(){
+
+                var searchTerm;
+                $("btnSearch").click(function(){
+                    searchTerm = "";
+                    if ($("#search").val() == ""){
+                        alert("Enter a zipcode");
+                    }
+                    else{
+                        searchTerm = $("#search").val();
+
+                        var url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=bc0d506890789b9f048252ad0344a8b3' + "format=json&jsoncallback=?&zip=" + searchTerm + "&parameter=fahrenheit";
+
+                        $.getJSON(url , function(data){
+                            var html ="";
+                            $.each(data.items, function(i, item){
+                                html += "<h3>" + item.city + "</h3>";
+                                html += "<p>" +item.temp + item.temp_max + item.temp_min + item.clouds + item.rain + item.humidity + item.visibility + item.wind + item.pressure + item.grnd_level + item.sea_level + "</p>";
+                                html += "<p><b> zip: </b>" + item.zipcode + "</p>";    
+                            });
+                            $("#WeatherWizard").html(html);
+                        });
+                    }
+                });
+            });
+                */
+            
+        
+        
+
+
+
+
+
+
+            /*const Weatherkey_url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=bc0d506890789b9f048252ad0344a8b3'
+            async function getWeatherkey() {
+                const  response = await fetch(Weatherkey_url);
+                const data = await response.json();
+                console.log(data);
+            }
+
+           getWeatherkey();*/
+
+        </script>
+    </body>
+</html>
