@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-Content-Type-Options" content="ie=edge" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>     
+        <style>
+        </style>
+        <title>Dorrell Fleets-IT-2320 Lab 9 </title>
+    </head>
+    <body>
+        <h1>Weather Search</h1>
+        ZipSearch: <input type="text" id="zipcode" />
+        <button>Weather Forecast</button> 
+        <table id="forecastData">
+            <tr>
+                <td>City:</td>
+                <td id="city"></td>
+            </tr>
+            <tr>
+                <td>Temperature:</td>
+                <td id="temperature"></td>
+            </tr>
+            <tr>
+                <td>Max Temp:</td>
+                <td id="maxtemp"></td>
+            </tr>
+            <tr>
+                <td>Min Temp:</td>
+                <td id="mintemp"></td>
+            </tr>
+            <tr>
+                <td>Wind:</td>
+                <td id="wind"></td>
+            </tr>
+            <tr>
+                <td>Speed:</td>
+                <td id="speed"></td>
+            </tr>
+            <tr>
+                <td>Rain:</td>
+                <td id="rain"></td>
+            </tr>
+            <tr>
+                <td>Humidity:</td>
+                <td id="humidity"></td>
+            </tr>
+            <tr>
+                <td>Clouds:</td>
+                <td id="clouds"></td>
+            </tr>
+            <tr>
+                <td>Visibility:</td>
+                <td id="visibility"></td>
+            </tr>
+            <tr>
+                <td>Pressure:</td>
+                <td id="pressure"></td>
+            </tr>
+            <tr>
+                <td>Sea Level:</td>
+                <td id="sealevel"></td>
+            </tr>
+            <tr>
+                <td>Ground Level:</td>
+                <td id="groundlevel"></td>
+            </tr>
+
+        </table>
+        <script>
+            $(document).ready(function(){
+
+                $("button").click(function(){
+                    var zipcode = $("#zipCode").val();
+                    $.ajax({
+                        url: "http://api.openweathermap.org/data/2.5/forecast?zip="+zipcode+"&appid=bc0d506890789b9f048252ad0344a8b3",
+                        method: "GET",
+                        dataType: "Json"
+                    }).done(function(result){
+                        var response = JSON.parse(result);
+                        $('#city').text(response.name);
+                        $('#temperature').text(response.main.temp);
+                        $('#maxtemp').text(response.main.temp_max);
+                        $('#mintemp').text(response.main.temp_min);
+                        $('#wind').text(response.main.wind);
+                        $('#speed').text(response.wind.speed);
+                        $('#rain').text(response.main.rain);
+                        $('#humidity').text(response.main.humidity);
+                        $('#clouds').text(response.main.clouds);
+                        $('#visibility').text(response.main.visibility);
+                        $('#pressure').text(response.main.pressure);
+                        $('#sealevel').text(response.main.sea_level);
+                        $('#groundlevel').text(response.main.grnd_level);
+
+                    });
+                });
+            });
+
+
+            /*const Weatherkey_url = 'http://api.openweathermap.org/data/2.5/forecast?id=6255149&appid=bc0d506890789b9f048252ad0344a8b3'
+            async function getWeatherkey() {
+                const  response = await fetch(Weatherkey_url);
+                const data = await response.json();
+                console.log(data);
+            }
+
+           getWeatherkey();*/
+
+        </script>
+    </body>
+</html>
