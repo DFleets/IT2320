@@ -74,7 +74,7 @@
                 $("button").click(function(){
                     var zipcode = $("#zipCode").val();
                     $.ajax({
-                        url: "http://api.openweathermap.org/data/2.5/forecast?zip="+zipcode+"us&appid=bc0d506890789b9f048252ad0344a8b3",
+                        url: "http://api.openweathermap.org/data/2.5/forecast?zip="+zipcode+"&appid=bc0d506890789b9f048252ad0344a8b3",
                         method: "GET",
                         dataType: "Json"
                     }).done(function(result){
@@ -98,7 +98,7 @@
             });
 
 
-            /*const Weatherkey_url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=bc0d506890789b9f048252ad0344a8b3'
+            /*const Weatherkey_url = 'http://api.openweathermap.org/data/2.5/forecast?id=6255149&appid=bc0d506890789b9f048252ad0344a8b3'
             async function getWeatherkey() {
                 const  response = await fetch(Weatherkey_url);
                 const data = await response.json();
