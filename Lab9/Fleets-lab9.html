@@ -72,13 +72,12 @@
             $(document).ready(function(){
 
                 $("button").click(function(){
-                    var zipcode = $("#zipCode").val();
+                    var zipcode = $("#zipcode").val();
                     $.ajax({
-                        url: "http://api.openweathermap.org/data/2.5/forecast?zip="+zipcode+"&appid=bc0d506890789b9f048252ad0344a8b3",
+                        url: "http://api.openweathermap.org/data/2.5/weather?zip="+zipcode+"&units=imperialappid=bc0d506890789b9f048252ad0344a8b3",
                         method: "GET",
                         dataType: "Json"
-                    }).done(function(result){
-                        var response = JSON.parse(result);
+                    }).done(function(response){
                         $('#city').text(response.name);
                         $('#temperature').text(response.main.temp);
                         $('#maxtemp').text(response.main.temp_max);
