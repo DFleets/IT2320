@@ -1,0 +1,65 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+</head>
+<body>
+<h2>Dorrell Fleets-IT-2320 Lab 11</h2>
+Enter a string: <input type="text" id="dataEntered">
+<button onclick="arrayData()">Submit</button>
+<br /><br />
+Search for this: <input type="text" id="search">
+<button onclick="scan()">Search</button>
+<br /><br />
+<button onclick="shuffle()" id="sort">Sort the Array</button> <button onclick="reverse()" id="reverse">Reverse the Array</button> 
+<br /><br />
+<strong>My Array Output</strong><br/>
+<span id="results"></span>
+<script>
+
+        var data = [];
+
+            
+    function arrayData() {
+
+        var DatVal="";
+
+        var dataEntered= document.getElementById('dataEntered').value;
+
+       data.push(dataEntered);
+ 
+       for(i = 0; i < data.length; i++) {
+           DatVal=DatVal + data[i] ;
+       } 
+       
+       document.getElementById('results').innerHTML=DatVal;   
+    };
+
+
+    
+        function scan(){
+            var search = document.getElementById('search').value;
+            var DatVal = data.indexOf('search'); 
+            
+            let list = data.findIndex(item => item == search || item.indexOf(search) >= 0);
+
+            document.getElementById('results').innerHTML=list!= -1? 'Found': "Cannot Find";
+
+
+        }
+
+
+        function shuffle(){
+          data.sort();
+          document.getElementById("results").innerHTML=data;
+        }   
+
+        function reverse(){
+         data.reverse();
+          document.getElementById("results").innerHTML=data;
+        }
+        
+
+</script>
+</body>
+</html>
