@@ -75,7 +75,7 @@
 	</tr>
 	<tr>
 		   <td><input type="reset" id="reset" name="reset" value="Reset"></td>
-           <td><input type="submit" id="submit" name="submit" value="Submit"></td>
+           <td><input type="button" id="btn" onclick="go()" value="Submit"></td>
 	</tr>
 
 </table>
@@ -83,48 +83,38 @@
 </body>
 <script>
 
-
-	$('#textArea').on('keyup',function(){
+	function go() {
+	    $('#textArea').on('keyup');
 		var count = $('#textArea').val().trim().split(' ');
   		$('#wordCount').text(count.length);
-	}); 
-
-	$(document).ready(function() {
-    $("#textArea").on('keyup',function() {
-        $("#box").val($("#textArea").val().toUpperCase());
-    })});
-
-	$(document).ready(function() {
-	$("#numDays").on('keyup',function() {
-		var now = new Date();
-		var days=$("#numDays").val();
-		days=parseInt(days);
-		now.setDate(now.getDate() + days);
-		document.getElementById("display").innerHTML=now.toLocaleDateString();
-	})});
-
-	
-	$(document).ready(function() {
-$("#textArea").on('keyup',function() {
-	var searchCharacter = $("#searchChar").val();
-	if(searchCharacter!=""){
+		$("#box").val($("#textArea").val().toUpperCase()); 
+		var searchCharacter = $("#searchChar").val();
+	 if(searchCharacter!=""){
 		var data = $("#textArea").val().toUpperCase()
 		var original = $("#textArea").val();
 		var updated=""; 
 		var count=0; 
-		for (var i = 0; i < data.length; i++) { 
-		if(data.charAt(i)!=searchCharacter){
-			updated=updated+original.charAt(i)
-		}else{
-			count=count+1;
-		}
+	 for (var i = 0; i < data.length; i++) { 
+	 if(data.charAt(i)!=searchCharacter){
+		updated=updated+original.charAt(i)
+	 }else{
+		count=count+1;
+	 }
+		
+	 }
+	 $('#numDays').on('keyup') 
+	var now = new Date();
+	var days=$("#numDays").val();
+	days=parseInt(days);
+	now.setDate(now.getDate() + days);
+	$("#display").html(now.toLocaleDateString());
+		
 	}
-}
-$("#square").val(updated);
-$("#search").html(count);
-})});   
 
+	 $("#square").val(updated);
+	 $("#search").html(count);
 
+	}
 
 
 </script>
