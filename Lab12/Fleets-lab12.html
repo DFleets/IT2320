@@ -1,0 +1,85 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script>
+</script>
+<style>	
+</style>
+</head>
+<body>
+<h2>Dorrell Fleets - IT 2320 - Lab 12</h2>
+<h3>GCD and Primes</h3>
+<main>
+    <main>
+        <h4>Numbers for GCD</h4> 
+        <label for="input1">First#</label> 
+        <input type="text" id= "input1" value = "" ><br> 
+        <br/>
+        <label for="input2">Second#</label> 
+        <input type="text" id="input2" value = "" ><br> 
+        <br/>
+        =======================================<br>
+        <p id= "display" > </p>
+        =======================================<br>
+
+        </br>
+        <h4>Number to get Prime</h4>
+        <label for="prime"></label> 
+        <input type="text" id="value" ><br>
+        <br/>
+        <input type="button" id="CalculateGCD" value="GCD" onclick="grab()">
+        <input type="button" id="Eratosthenes" value="Prime" onclick="Prime()"> 
+    </main> 
+</main>
+</body>
+<script>
+
+    function grab() {
+        var a = document.getElementById('input1').value;
+        var b = document.getElementById('input2').value;
+    
+
+     function GCD(a, b){
+                  
+        if(b == 0){
+            return a;
+        }
+        return GCD(b,a %b);               
+        }
+        document.getElementById('display').innerHTML= GCD(a,b);
+    }
+
+   
+
+    function Prime(){
+
+        var n = document.getElementById('value').value;
+
+        prime = Array.from({length: n+1}, (_, i) => true);
+
+        for (p = 2; p * p <= n; p++){
+
+            if (prime[p] == true){
+
+                for (i = p * p; i <= n; i += p)
+                    prime[i] = false;
+
+            }
+        }
+
+        for (i = 2; i <= n; i++){
+
+            if (prime[i] == true)
+                    document.getElementById("display").innerHTML += i+"," ;
+                   
+        }
+
+
+    }
+
+    
+
+
+</script>
+</html>
